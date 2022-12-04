@@ -1,28 +1,31 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <climits>
 # include <algorithm>
-# include <list>
+# include <vector>
+# include <stdexcept>
+# include <iostream>
 
-class span
+class Span
 {
 	public:
-	span();
-	span(unsigned int size);
-	span(const span &src);
-	span& operator=(const span& src);
-	~span();
+	Span();
+	Span(unsigned int size);
+	Span(const Span &src);
+	Span& operator=(const Span& src);
+	~Span();
 
-	unsigned int getSize();
-	void setSize();
+	unsigned int getSize() const;
+	const std::vector<int>& getVector() const;
 
-	void addNumber(long long int n);
-	unsigned long long int shortestSpan();
-	unsigned long long int longestSpan();
+	void addNumber(int n);
+	unsigned int shortestSpan();
+	unsigned int longestSpan();
 
 	private:
 	unsigned int size;
-	std::list <long long int> lis;
+	std::vector <int> v;
 };
 
 #endif
