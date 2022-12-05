@@ -48,6 +48,7 @@ void Span::addNumber(int n)
 		throw std::length_error("Span class is already full");
 
 	std::vector<int>::iterator i = std::upper_bound(v.begin(), v.end(), n);
+
 	if (i != v.end())
 		v.insert(i, n);
 	else
@@ -59,15 +60,15 @@ unsigned int Span::shortestSpan()
 	if (v.size() < 2)
 		throw std::length_error("No Span to measure");
 
-	unsigned int short_Span = UINT_MAX;
+	unsigned int shortSpan = INT_MAX;
 	unsigned int diff;
 	for (size_t i = 1; i < v.size(); i++)
 	{
 		diff = v[i] - v[i - 1];
-		if (diff < short_Span)
-			short_Span = diff;
+		if (diff < shortSpan)
+			shortSpan = diff;
 	}
-	return (short_Span);
+	return (shortSpan);
 }
 
 unsigned int Span::longestSpan()
@@ -75,5 +76,53 @@ unsigned int Span::longestSpan()
 	if (v.size() < 2)
 		throw std::length_error("No Span to measure");
 
-	return (v.end() - v.begin());
+	return (v.back() - v[0]);
+}
+
+void Span::fillSpan()
+{
+	srand((unsigned)time(0));
+	size_t i = 0;
+
+	int low = -size;
+	int high = size;
+	int range = (high - low);
+
+	while (i++ < this->size)
+	{
+		int number = low + int(rand() % range);
+		addNumber(number);
+	}
+}
+
+void Span::fillSpan(int a, int b)
+{
+	srand((unsigned)time(0));
+	size_t i = 0;
+
+	if (a > b)
+		std::swap(a, b);
+
+	int low = a;
+	int high = b;
+	int range = (high - low);
+
+	while (i++ < this->size)
+	{
+		int number = low + int(rand() % range);
+		addNumber(number);
+	}
+}
+
+void Span::printSpan()
+{
+	size_t i = 0;
+
+	std::cout << "Span { ";
+	while (i < this->size)
+	{
+		std::cout << v[i] << ", ";
+		i++;
+	}
+	std::cout << "\b\b }" << std::endl;
 }

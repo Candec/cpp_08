@@ -6,6 +6,7 @@
 # include <vector>
 # include <stdexcept>
 # include <iostream>
+# include <stdlib.h>
 
 class Span
 {
@@ -22,6 +23,11 @@ class Span
 	void addNumber(int n);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
+
+//	extra utility
+	void fillSpan();
+	void fillSpan(int a, int b);
+	void printSpan();
 
 	private:
 	unsigned int size;
