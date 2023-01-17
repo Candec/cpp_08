@@ -3,7 +3,7 @@
 template <class T>
 void easyfind(const T& haystack, int needle)
 {
-	class T::const_iterator index = std::find(haystack.begin(), haystack.end(), needle);
+	typename T::const_iterator index = std::find(haystack.begin(), haystack.end(), needle);
 
 	std::string			str;
 	std::stringstream 	stream;
